@@ -4,6 +4,8 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++){
 // Click function for detecting key board press
 document.querySelectorAll(".drum")[i].addEventListener("click",function () {
     makeSound(this.innerHTML);
+    buttonAnimation(this.innerHTML);
+
 });
 
 }
@@ -11,6 +13,7 @@ document.querySelectorAll(".drum")[i].addEventListener("click",function () {
 
 document.addEventListener("keypress", function(Event) {
     makeSound(Event.key);
+    buttonAnimation(Event.key);
 });
 
 
@@ -57,5 +60,12 @@ function makeSound(key) {
 
 
 
+function buttonAnimation(clicked) {
+    var activeButton = document.querySelector("." + clicked);
+    activeButton.classList.add("pressed");
 
+    setTimeout(function(){
+       activeButton.classList.remove("pressed");
+    },500);
+}
 
